@@ -1,213 +1,362 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>CDN Hospital</title>
-  <meta charset="utf-8">
-  <!-- //maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css -->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-  <!--<link href="./bootstrap.min.css" rel="stylesheet"> -->
-  <!-- 부트스트랩 css -->
-  <style>
-    .local-video {
-      width: 165px;
-      height: 165px;
-    }
+<title>CDN Hospital</title>
+<meta charset="utf-8">
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 
-    .remote-video {
-      width: 320px;
-      height: 240px;
-    }
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+<!-- <link href="css/custom.css" rel="stylesheet"> -->
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+<script src="js/bootstrap.js"></script>
+<!-- 부트스트랩 css -->
 
-    @media (min-width: 992px) {
-      .remote-video {
-        width: 640px;
-        height: 480px;
-      }
-    }
+<style>
+.btn-outline-primary {
+	color: #2780E3;
+	background-color: transparent;
+	background-image: none;
+	border-color: #2780E3;
+}
 
-    .chat-timeline {
-      height: 200px;
-      font-size: 9px;
-      overflow: auto;
-    }
+.btn-outline-primary:hover {
+	color: #fff;
+	background-color: #2780E3;
+	border-color: #2780E3;
+}
 
-    .chat-timeline .local {
-      color: blue;
-    }
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+	-webkit-box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+	box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+}
 
-    .chat-timeline .remote {
-      color: red;
-    }
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+	color: #2780E3;
+	background-color: transparent;
+}
 
-    @media (min-width: 992px) {
-      .channel-list {
-        font-size: 0.8em;
-      }
-    }
-  </style>
+.btn-outline-primary:not (:disabled ):not (.disabled ):active,
+	.btn-outline-primary:not (:disabled ):not (.disabled ).active, .show>.btn-outline-primary.dropdown-toggle
+	{
+	color: #fff;
+	background-color: #2780E3;
+	border-color: #2780E3;
+}
+
+.btn-outline-primary:not (:disabled ):not (.disabled ):active:focus,
+	.btn-outline-primary:not (:disabled ):not (.disabled ).active:focus,
+	.show>.btn-outline-primary.dropdown-toggle:focus {
+	-webkit-box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+	box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+}
+.btn-primary {
+  color: #fff;
+  background-color: #2780E3;
+  border-color: #2780E3;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #1a6dca;
+  border-color: #1967be;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  color: #fff;
+  background-color: #2780E3;
+  border-color: #2780E3;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #1967be;
+  border-color: #1761b3;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+}
+.bg-primary {
+  background-color: #2780E3 !important;
+   -webkit-box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+	box-shadow: 0 0 0 0.2rem rgba(39, 128, 227, 0.5);
+	
+}
+
+/*//////////////////////////////////////////  */
+.btn-warning {
+  color: #fff;
+  background-color: #FF7518;
+  border-color: #FF7518;
+}
+
+.btn-warning:hover {
+  color: #fff;
+  background-color: #f16100;
+  border-color: #e45c00;
+}
+
+.btn-warning:focus, .btn-warning.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 117, 24, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(255, 117, 24, 0.5);
+}
+
+.btn-warning.disabled, .btn-warning:disabled {
+  color: #fff;
+  background-color: #FF7518;
+  border-color: #FF7518;
+}
+
+.btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active,
+.show > .btn-warning.dropdown-toggle {
+  color: #fff;
+  background-color: #e45c00;
+  border-color: #d75700;
+}
+
+.btn-warning:not(:disabled):not(.disabled):active:focus, .btn-warning:not(:disabled):not(.disabled).active:focus,
+.show > .btn-warning.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 117, 24, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(255, 117, 24, 0.5);
+}
+
+/*====================================================================================  */
+.local-video {
+	width: 165px;
+	height: 165px;
+}
+
+.remote-video {
+	width: 320px;
+	height: 240px;
+}
+
+@media ( min-width : 992px) {
+	.remote-video {
+		width: 640px;
+		height: 480px;
+	}
+}
+
+.chat-timeline {
+	height: 200px;
+	font-size: 9px;
+	overflow: auto;
+}
+
+.chat-timeline .local {
+	color: blue;
+}
+
+.chat-timeline .remote {
+	color: red;
+}
+
+@media ( min-width : 992px) {
+	.channel-list {
+		font-size: 0.8em;
+	}
+}
+
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
+	<div class="container">
+		<div class="row">
+			 <!-- style="background-color: #2780E3; color:#ffffff;" h1임시 css -->
+			<div class="col-md-12">
+				<h1 class="page-header bg-primary" style="border-radius: 3px">CDN Hospital</h1>
+			</div>
 
-      <div class="col-md-12">
-        <h1 class="page-header">CDN Hospital</h1>
-      </div>
+			<div class="col-md-6 col-md-offset-3 hide">
+				<div class="alert alert-info alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					...
+				</div>
+			</div>
+		</div>
 
-      <div class="col-md-6 col-md-offset-3 hide">
-        <div class="alert alert-info alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          ...
-        </div>
-      </div>
-    </div>
+		<div class="row">
+			<div class="col-md-2">
 
-    <div class="row">
-      <div class="col-md-2">
+				<h2 class="h3">Profile/Config</h2>
+				<h3 class="h4">User Id</h3>
+				<form>
+					<div class="form-group">
+						<label class="sr-only" for="userId">User Id</label> <input
+							class="form-control" type="text" id="userId"
+							placeholder="Enter your user id." value="">
+					</div>
+				</form>
 
-        <h2 class="h3">Profile/Config</h2>
-        <h3 class="h4">User Id</h3>
-        <form>
-          <div class="form-group">
-            <label class="sr-only" for="userId">User Id</label>
-            <input class="form-control" type="text" id="userId" placeholder="Enter your user id." value="">
-          </div>
-        </form>
+				<h2 class="h3">Channel</h2>
+				<h3 class="h4">Create</h3>
+				<form>
+					<div class="from-gruop">
+						<input class="form-control" type="text" id="createChannelId"
+							placeholder="Create and connect the channel." value=""
+							readonly=""> <label class="sr-only" for="createChannelId">Channel
+							Id</label>
+					</div>
+					<button class="btn btn-outline-primary btn-sm btn-block"
+						id="createChannel">
+						<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+						Create
+					</button>
+				</form>
+				<button class="btn btn-primary btn-sm btn-block"
+					id="disconnectChannel">
+					<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+					Disconnect
+				</button>
 
-        <h2 class="h3">Channel</h2>
-        <h3 class="h4">Create</h3>
-        <form>
-          <div class="from-gruop">
-            <input class="form-control" type="text" id="createChannelId" placeholder="Create and connect the channel." value="" readonly="">
-            <label class="sr-only" for="createChannelId">Channel Id</label>
-          </div>
-          <button class="btn btn-default btn-sm btn-block" id="createChannel">
-            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> Create
-          </button>
-        </form>
-        <button class="btn btn-default btn-sm btn-block" id="disconnectChannel">
-          <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Disconnect
-        </button>
+				<h3 class="h4">Channel List</h3>
+				<div class="list-group channel-list" id="channelList"></div>
 
-        <h3 class="h4">Channel List</h3>
-        <div class="list-group channel-list" id="channelList"></div>
+				<button class="btn btn-default btn-sm pull-right btn-warning"
+					id="refreshChannel">
+					<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+					Refresh
+				</button>
+			</div>
 
-        <button class="btn btn-default btn-sm pull-right" id="refreshChannel">
-          <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
-        </button>
-      </div>
-
-      <div class="col-md-7">
-        <h2 class="h3">Remote</h2>
-        <div class="well">
-          <video class="remote-video center-block" id="remoteVideo"></video>
-			<!-- 이 외지 비디오 태그는 실제로 Callee의 얼굴 영상이 나타날 곳 입니다. 
+			<div class="col-md-7">
+				<h2 class="h3">Remote</h2>
+				<div class="well">
+					<video class="remote-video center-block" id="remoteVideo"></video>
+					<!-- 이 외지 비디오 태그는 실제로 Callee의 얼굴 영상이 나타날 곳 입니다. 
 				이 Video 태그에 PlayRTC 자바스크립트 라이브러리의 객체가 영상을 연결(bind)합니다.
 				
 			 -->
-          <div class="text-center hide">
-            <button class="btn btn-default btn-sm" id="saveFileFromRemote">
-              <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Save
-            </button>
-          </div>
+					<div class="text-center hide">
+						<button class="btn btn-default btn-sm" id="saveFileFromRemote">
+							<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+							Save
+						</button>
+					</div>
 
-          <div class="text-center">
-            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
-            <div class="btn-group" role="group" aria-label="...">
-              <button class="btn btn-default btn-sm" id="startRemoteVideoRecord">
-                <span class="glyphicon glyphicon-record" aria-hidden="true"></span> Record
-              </button>
-              <button class="btn btn-default btn-sm" id="stopRemoteVideoRecord">
-                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
-              </button>
-              <button class="btn btn-default btn-sm" id="saveRemoteVideoRecord">
-                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Save
-              </button>
-            </div>
-          </div>
-        </div>
+					<div class="text-center">
+						<span class="glyphicon glyphicon-facetime-video"
+							aria-hidden="true"></span>
+						<div class="btn-group" role="group" aria-label="...">
+							<button class="btn btn-default btn-sm"
+								id="startRemoteVideoRecord">
+								<span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+								Record
+							</button>
+							<button class="btn btn-default btn-sm" id="stopRemoteVideoRecord">
+								<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+								Stop
+							</button>
+							<button class="btn btn-default btn-sm" id="saveRemoteVideoRecord">
+								<span class="glyphicon glyphicon-download-alt"
+									aria-hidden="true"></span> Save
+							</button>
+						</div>
+					</div>
+				</div>
 
-      </div>
-      <div class="col-md-3">
-        <h2 class="h3">Local</h2>
-        <div class="well">
-          <video class="local-video center-block" id="localVideo" muted></video>
-			<!--  자신의 화면을 표시할 비디오 태그를 보면 mute 라는 속성을 주고 있음을 볼 수 있습니다.
+			</div>
+			<div class="col-md-3">
+				<h2 class="h3">Local</h2>
+				<div class="well">
+					<video class="local-video center-block" id="localVideo" muted></video>
+					<!--  자신의 화면을 표시할 비디오 태그를 보면 mute 라는 속성을 주고 있음을 볼 수 있습니다.
 			 반드시 자신의 비디오는 mute 를 해야만 합니다. 그렇지 않으면, 
 			마이크로 들어간 자신의 음성이 다시 자신의 비디오로 재생되어 하울링이 발생하게 됩니다. -->
-          <div class="progress" id="sendFileToRemoteBarWrapper">
-            <div class="progress-bar" id="sendFileToRemoteBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0px;">
-              <!--<span class="sr-only">60% Complete</span>-->
-              <!-- 진행바 progress-bar aria-valuenow는 현재0 , min 최소값 max 는 최대값 -->
-            </div>
-          </div>
+					<div class="progress" id="sendFileToRemoteBarWrapper">
+						<div class="progress-bar" id="sendFileToRemoteBar"
+							role="progressbar" aria-valuenow="0" aria-valuemin="0"
+							aria-valuemax="100" style="width: 0px;">
+							<!--<span class="sr-only">60% Complete</span>-->
+							<!-- 진행바 progress-bar aria-valuenow는 현재0 , min 최소값 max 는 최대값 -->
+						</div>
+					</div>
 
-          <div class="text-center">
-          	<!-- glyphicon 아이콘 임 -->
-            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
-            <div class="btn-group" role="group" aria-label="...">
-              <button class="btn btn-default btn-sm" id="startLocalVideoRecord">
-                <span class="glyphicon glyphicon-record" aria-hidden="true"></span> Record
-              </button>
-              <button class="btn btn-default btn-sm" id="stopLocalVideoRecord">
-                <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
-              </button>
-              <button class="btn btn-default btn-sm" id="saveLocalVideoRecord">
-                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Save
-              </button>
-            </div>
-          </div>
+					<div class="text-center">
+						<!-- glyphicon 아이콘 임 -->
+						<span class="glyphicon glyphicon-facetime-video"
+							aria-hidden="true"></span>
+						<div class="btn-group" role="group" aria-label="...">
+							<button class="btn btn-default btn-sm" id="startLocalVideoRecord">
+								<span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+								Record
+							</button>
+							<button class="btn btn-default btn-sm" id="stopLocalVideoRecord">
+								<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+								Stop
+							</button>
+							<button class="btn btn-default btn-sm" id="saveLocalVideoRecord">
+								<span class="glyphicon glyphicon-download-alt"
+									aria-hidden="true"></span> Save
+							</button>
+						</div>
+					</div>
 
-        </div>
+				</div>
 
-        <div class="well chat-timeline" id="timeline" style="overflow: auto;">
-        </div>
+				<div class="well chat-timeline" id="timeline"
+					style="overflow: auto;"></div>
 
-        <form>
-          <label class="sr-only" for="sendMessage">Transfer Message</label>
-          <div class="input-group input-group-sm">
-            <div class="input-group-addon">
-              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-            </div>
-            <input type="text" class="form-control" id="sendMessage" placeholder="Enter your message.">
-            <span class="input-group-btn">
-              <button class="btn btn-default" id="sendText">
-                <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send
-              </button>
-            </span>
-          </div>
-        </form>
+				<form>
+					<label class="sr-only" for="sendMessage">Transfer Message</label>
+					<div class="input-group input-group-sm">
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+						</div>
+						<input type="text" class="form-control" id="sendMessage"
+							placeholder="Enter your message."> <span
+							class="input-group-btn">
+							<button class="btn btn-default btn-warning" id="sendText">
+								<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+								Send
+							</button>
+						</span>
+					</div>
+				</form>
 
-        <form class="form-inline">
-          <div class="row">
-            <div class="col-md-8">
-              <label class="sr-only" for="selectFile">Choose File</label>
-              <input type="file" id="selectFile">
-            </div>
-            <div class="col-md-4">
-              <button class="btn btn-default btn-xs pull-right" id="sendFile">
-                <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send
-              </button>
-            </div>
-          </div>
-        </form>
+				<form class="form-inline">
+					<div class="row">
+						<div class="col-md-8">
+							<label class="sr-only" for="selectFile">Choose File</label> <input
+								type="file" id="selectFile">
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-default btn-xs pull-right " id="sendFile">
+								<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+								Send
+							</button>
+						</div>
+					</div>
+				</form>
 
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 
-  <!--<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>-->
-  <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
-  <!-- playRTC 스크립트 적용한 부분 -->
-  <!-- <script src="//www.playrtc.com/sdk/js/playrtc.js"></script> -->
-  <script src="./playrtc.js"></script>
-  <script>
+	<!--<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>-->
+	<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+	<!-- playRTC 스크립트 적용한 부분 -->
+	<!-- <script src="//www.playrtc.com/sdk/js/playrtc.js"></script> -->
+	<script src="js/playrtc.js"></script>
+	<script>
     'use strict';
-
     var createChannelButton = document.querySelector('#createChannel');
     //채널생성 querySelector 문서의 첫번 째 요소 선택
     var createChannelIdInput = document.querySelector('#createChannelId');
@@ -276,31 +425,23 @@
       app.getChannelList(function (result) {
         var channels = result.channels;
         var channelsLength = channels.length;
-
         while (channelList.hasChildNodes()) {
           channelList.removeChild(channelList.firstChild);
         }
-
         for (var i = 0; i < channelsLength; i++) {
           var channelListAnchor = document.createElement('a');
           var linkIcon = document.createElement('span');
-
           channelListAnchor.classList.add('list-group-item');
           channelListAnchor.setAttribute('data-channelid', channels[i].channelId);
           channelListAnchor.textContent = channels[i].channelId;
-
           linkIcon.classList.add('glyphicon', 'glyphicon-menu-right', 'pull-right');
           linkIcon.setAttribute('aria-hidden', 'true');
-
           channelListAnchor.appendChild(linkIcon);
-
           channelList.appendChild(channelListAnchor);
         }
       });
     }
-
     getChannelList(); // 채널 목록 가져오기 호출
-
     //PlayRTC의 on 메서드 호출 채널 연결
     app.on('connectChannel', function (channelId) {
       createChannelIdInput.value = channelId;
@@ -309,30 +450,25 @@
 	//PlayRTC의 on 메서드 호출 채널 끊기
     app.on('disconnectChannel', function (channelId) {
       createChannelIdInput.value = ''; //크리에이트 채널 아이디 인풋의 값을 ''빈칸으로 만들기
-
       while (chattingTimeline.hasChildNodes()) { //채팅 타임라인에 자식노드가 있을때 까지
         chattingTimeline.removeChild(chattingTimeline.firstChild); 
       //채팅 타임라인에 자식노드를 지운다 첫번째 노드를
       }
-
       getChannelList();
     });
 	//다른 끊긴 채널 
     app.on('otherDisconnectChannel', function (channelId) {
       remoteVideo.src = ''; //외지 비디오 src를 지운다
-
       while (chattingTimeline.hasChildNodes()) { ////채팅 타임라인에 자식노드가 있을때 까지
         chattingTimeline.removeChild(chattingTimeline.firstChild);
         //채팅 타임라인에 자식노드를 지운다 첫번째 노드를
       }
-
       getChannelList();
     });
 	//PlayRTC객체에 데이타 스트림을 추가한다 
     app.on('addDataStream', function (pid, uid, dataChannel) { //pid,uid,데이터채널을가지고 온다 스트림생성
       dataChannel.on('message', function (message) {
         var chatParagraph;
-
         if (message.type === 'text') { // 메세지 타입이 텍스트 이면 === 은 글자까지 text
           chatParagraph = document.createElement('p'); //p요소를 생성합니다 챗 파라그래프에 
           chatParagraph.classList.add('local');
@@ -350,29 +486,23 @@
         //파일 보내기 넓이를 0px로 해서 안보이게
         }
       });
-
       dataChannel.on('progress', function (message) { //프로그레스 관련 펑션 이해 미달;
         var width = sendFileToRemoteBarWrapper.clientWidth;
         //
         var progressbar = (width / message.fragCount) * (message.fragIndex + 1);
-
         if (message.totalSize === message.fragSize) {
           return;
         }
-
         sendFileToRemoteBar.style.width = progressbar + 'px';
       });
-
       dataChannel.on('error', function (event) {
         alert('ERROR. See the log.');
       });
     });
-
     refreshChannelButton.addEventListener('click', function (event) {
       event.preventDefault(); //다른 이벤트 발생 못하게 방지
       getChannelList(); //채널 목록 가져오기 호출
     }, false);
-
     channelList.addEventListener('click', function (event) {
       var channelId = event.target.dataset.channelid;
 	  //채널 리스트 클릭시 채널 아이디에 클릭했던 타겟 채널 아이디를 을 데이터셋 시킨다 채널 아이디에
@@ -383,9 +513,7 @@
           uid: userId
     	  }
       });
-
     }, false);
-
     createChannelButton.addEventListener('click', function (event) {
     	//채널 생성 버튼을 눌렀을 시에 이벤트 이다.
       event.preventDefault();
@@ -397,9 +525,7 @@
           uid: userId
         }
       })
-
     }, false);
-
     disconnectChannelButton.addEventListener('click', function (event) {
       event.preventDefault(); //브라우저의 행동을 막고 클릭 이벤트만 동작되게 한다.
       app.disconnectChannel(); //PlayRTC의 채널 끊기 펑션 호출
@@ -422,15 +548,12 @@
         	//퍼스트 미디어 피어에 녹화 내장 객체가 있는것 같음
       }
     }, false);
-
     stopRemoteVideoRecordButton.addEventListener('click', function (event) {
     //외지 비디오 녹화 중지 버튼 이벤트
       var peers = app.getAllPeer();
       var hasPeers = peers.length > 0;
       var firstPeerMedia = peers[0].getMedia();
-
       event.preventDefault();
-
       if (hasPeers) {
         firstPeerMedia.recordStop(function (blob) {
           recordedRemoteVideoBlob = blob;
@@ -438,7 +561,6 @@
         });
       }
     }, false);
-
     saveRemoteVideoRecordButton.addEventListener('click', function (event) {
     //외지 비디오 녹화 저장 버튼
       event.preventDefault();
@@ -451,17 +573,13 @@
 	//========================로컬 비디오 녹화 관련============================================
     startLocalVideoRecordButton.addEventListener('click', function (event) {
       var media = app.getMedia();
-
       event.preventDefault();
-
       if (media) {
         media.record();
       }
     }, false);
-
     stopLocalVideoRecordButton.addEventListener('click', function (event) {
       var media = app.getMedia();
-
       event.preventDefault();
       if (media) {
         media.recordStop(function (blob) {
@@ -469,7 +587,6 @@
         });
       }
     }, false);
-
     saveLocalVideoRecordButton.addEventListener('click', function (event) {
       event.preventDefault();
       if (recordedLocalVideoBlob) {
@@ -481,16 +598,13 @@
       var chatParagraph;
       //타임라인에 저장할 채팅 단락 p요소랑 remote요소를 다 추가해서 저장하는 것이다.
       var message = sendMessageInput.value;
-
       event.preventDefault();
-
       if (message) {
         app.sendText(message);
 		//PlayRTC의 내장 객체를 이용해서 메세지 전송
         chatParagraph = document.createElement('p');
         chatParagraph.classList.add('remote');
         chatParagraph.textContent = message;
-
         chattingTimeline.appendChild(chatParagraph);
       }
       sendMessageInput.value = '';
@@ -500,7 +614,6 @@
       var myFile = selectFileInput.files[0];
 	//myFile 요소에 상단에서 정해준 파일을 배열에 넣음
       event.preventDefault();
-
       if (!myFile) { //파일 요소가 없다면 리턴 false
         return false;
       }
